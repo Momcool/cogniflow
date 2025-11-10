@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CogniFlow - Executive Memory Extension</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #818cf8;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-light: #252525;
+            --text: #f5f5f5;
+            --text-muted: #8a8a8a;
+            --border: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Professional Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 5%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-hover);
+        }
+        
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 5%;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(56px, 7vw, 96px);
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+            margin-bottom: 28px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #8a8a8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text .subhead {
+            font-size: 22px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 48px;
+            max-width: 520px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 44px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-secondary {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            color: var(--primary-hover);
+        }
+        
+        /* Demo Mockup */
+        .demo-mockup {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+        }
+        
+        .demo-toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #333;
+        }
+        
+        .demo-content {
+            background: #000;
+            height: 420px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            padding: 100px 5%;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .trust-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        
+        .logo-marquee {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .logo-marquee div {
+            width: 140px;
+            height: 32px;
+            background: var(--surface-light);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Feature Blocks */
+        .feature-block {
+            padding: 140px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-block h2 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+        
+        .feature-block .description {
+            font-size: 22px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 680px;
+            margin-bottom: 80px;
+        }
+        
+        .feature-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+        
+        .feature-showcase:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .feature-showcase:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .feature-visual {
+            background: var(--surface);
+            border-radius: 24px;
+            height: 480px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-text h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .feature-text p {
+            font-size: 19px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            color: var(--text-muted);
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .feature-list li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--surface);
+            padding: 80px 5% 40px;
+            border-top: 1px solid var(--border);
+            margin-top: 140px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        
+        .footer-column h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 14px;
+        }
+        
+        .footer-column a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary-hover);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">CogniFlow</div>
+        <ul class="nav-links">
+            <li><a href="product.html">Product</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="security.html">Security</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta">Get Demo</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Your Mind,<br>Extended.</h1>
+            <p class="subhead">
+                CogniFlow passively captures, intelligently organizes, and proactively delivers your critical information. 
+                Built for executives who can't afford to forget.
+            </p>
+            <div class="hero-actions">
+                <a href="pricing.html" class="btn-primary">Start 14-Day Trial</a>
+                <a href="contact.html" class="btn-secondary">Schedule Demo →</a>
+            </div>
+        </div>
+        <div class="demo-mockup">
+            <div class="demo-toolbar">
+                <div class="demo-dot" style="background: #ff5f57;"></div>
+                <div class="demo-dot" style="background: #ffbd2e;"></div>
+                <div class="demo-dot" style="background: #28ca42;"></div>
+            </div>
+            <div class="demo-content">
+                Interactive Memory Graph Visualization
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <p class="trust-text">Trusted by leaders at</p>
+        <div class="logo-marquee">
+            <div>Stripe</div>
+            <div>Andreessen Horowitz</div>
+            <div>Vercel</div>
+            <div>Mayo Clinic</div>
+            <div>Ramp</div>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <h2>Passive Capture,<br>Active Intelligence.</h2>
+        <p class="description">
+            Unlike tools that require manual input, CogniFlow operates silently in the background, 
+            ingesting your digital exhaust and transforming it into actionable memory.
+        </p>
+        <div class="feature-showcase">
+            <div class="feature-visual"></div>
+            <div class="feature-text">
+                <h3>Zero-Friction Ingestion</h3>
+                <p>
+                    Connect Gmail, Outlook, Slack, Notion, and your filesystem. We capture everything 
+                    without changing how you work. No star ratings. No manual tagging. Zero cognitive overhead.
+                </p>
+                <ul class="feature-list">
+                    <li>99.7% capture accuracy</li>
+                    <li>End-to-end encryption at rest</li>
+                    <li>SOC 2 Type II compliant</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom: 0;">CogniFlow</div>
+                <p>
+                    Executive memory extension for high-stakes decision makers. 
+                    Trusted by Fortune 500 leadership teams worldwide.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="product.html">Features</a></li>
+                    <li><a href="security.html">Security</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="roadmap.html">Roadmap</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="resources.html">Whitepapers</a></li>
+                    <li><a href="casestudies.html">Case Studies</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                    <li><a href="help.html">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="security.html">Security</a></li>
+                    <li><a href="compliance.html">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CogniFlow, Inc. All rights reserved.</p>
+            <div style="display: flex; gap: 24px;">
+                <a href="#" style="color: var(--text-muted); text-decoration: none;">Twitter</a>
+                <a href="#" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a>
+                <a href="#" style="color: var(--text-muted); text-decoration: none;">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js" defer></script>
+</body>
+</html>
