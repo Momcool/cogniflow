@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sales - CogniFlow</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-light: #252525;
+            --text: #f5f5f5;
+            --text-muted: #8a8a8a;
+            --border: #2a2a2a;
+        }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 120px 5% 60px;
+        }
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .contact-info h1 {
+            font-size: 72px;
+            letter-spacing: -2.5px;
+            margin-bottom: 32px;
+            line-height: 1.05;
+        }
+        .contact-info p {
+            font-size: 20px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 60px;
+        }
+        .contact-methods {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-method:last-child {
+            border-bottom: none;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .sales-form {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px;
+        }
+        .form-group {
+            margin-bottom: 28px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-layout">
+        <div class="contact-info">
+            <h1>Let's Build Your<br>Memory System.</h1>
+            <p>
+                Our team will analyze your workflow and design a custom implementation. 
+                Most deployments are live within 48 hours.
+            </p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <div style="font-weight: 600;">Enterprise Sales</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">+1 (415) 555-0123</div>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <div style="font-weight: 600;">Email Us</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">sales@cogniflow.com</div>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">🗓️</div>
+                    <div>
+                        <div style="font-weight: 600;">Schedule Directly</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">15-min discovery call</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <form class="sales-form" id="salesForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Work Email</label>
+                <input type="email" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" placeholder="e.g., CEO, Partner, Managing Director" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Team Size</label>
+                <select required>
+                    <option value="">Select range</option>
+                    <option>Just me</option>
+                    <option>2-10 executives</option>
+                    <option>11-50</option>
+                    <option>51-200</option>
+                    <option>200+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Biggest Memory Challenge?</label>
+                <textarea rows="4" placeholder="e.g., 'I forget client context between board meetings'" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>How did you hear about us?</label>
+                <select>
+                    <option>LinkedIn</option>
+                    <option>Referral</option>
+                    <option>Press</option>
+                    <option>Search</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Get Custom Quote Within 24 Hours</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('salesForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            alert('Thanks! We\'ll send your custom quote within 24 hours.');
+            e.target.reset();
+        });
+    </script>
+    <script src="main.js" defer></script>
+</body>
+</html>
