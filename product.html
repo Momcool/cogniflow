@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - CogniFlow</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-light: #252525;
+            --text: #f5f5f5;
+            --text-muted: #8a8a8a;
+            --border: #2a2a2a;
+        }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 120px 5% 60px;
+        }
+        .product-hero {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 140px;
+        }
+        .product-hero h1 {
+            font-size: 88px;
+            letter-spacing: -3px;
+            margin-bottom: 28px;
+            line-height: 1.05;
+        }
+        .product-hero p {
+            font-size: 24px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .feature-deep-dive {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            margin-bottom: 180px;
+            align-items: start;
+        }
+        .feature-content h2 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 32px;
+        }
+        .feature-content p {
+            font-size: 20px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .specs {
+            background: var(--surface);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .specs h4 {
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        .feature-visual-pro {
+            background: var(--surface);
+            border-radius: 24px;
+            height: 640px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="product-hero">
+        <h1>Three Layers of<br>Cognitive Extension</h1>
+        <p>How CogniFlow turns digital chaos into executable intelligence—without changing how you work.</p>
+    </div>
+    
+    <div class="feature-deep-dive">
+        <div class="feature-content">
+            <h2>Layer 1: Silent Ingestion</h2>
+            <p>
+                Connect your tools once. CogniFlow passively captures every email, Slack message, document, 
+                and calendar event in real-time. No manual entry. No disruption. No forgotten context.
+            </p>
+            <div class="specs">
+                <h4>Technical Specifications</h4>
+                <div class="spec-item">
+                    <span>Capture Latency</span>
+                    <span>< 2 seconds</span>
+                </div>
+                <div class="spec-item">
+                    <span>Supported Integrations</span>
+                    <span>47 platforms</span>
+                </div>
+                <div class="spec-item">
+                    <span>Encryption</span>
+                    <span>AES-256 at rest</span>
+                </div>
+            </div>
+        </div>
+        <div class="feature-visual-pro"></div>
+    </div>
+    
+    <div class="feature-deep-dive">
+        <div class="feature-content">
+            <h2>Layer 2: Knowledge Graphing</h2>
+            <p>
+                Our AI doesn't just store data—it understands relationships. It maps how people, projects, 
+                and decisions interconnect, creating a dynamic model of your professional world.
+            </p>
+            <div class="specs">
+                <h4>AI Capabilities</h4>
+                <div class="spec-item">
+                    <span>Entity Recognition</span>
+                    <span>99.2% accuracy</span>
+                </div>
+                <div class="spec-item">
+                    <span>Relationship Mapping</span>
+                    <span>Multi-hop reasoning</span>
+                </div>
+                <div class="spec-item">
+                    <span>Model</span>
+                    <span>GPT-4 + fine-tuned</span>
+                </div>
+            </div>
+        </div>
+        <div class="feature-visual-pro"></div>
+    </div>
+    <script src="main.js" defer></script>
+</body>
+</html>
