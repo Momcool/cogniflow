@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - CogniFlow</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-light: #252525;
+            --text: #f5f5f5;
+            --text-muted: #8a8a8a;
+            --border: #2a2a2a;
+        }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 120px 5% 60px;
+        }
+        .pricing-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 100px;
+        }
+        .pricing-header h1 {
+            font-size: 88px;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+        }
+        .pricing-header p {
+            font-size: 22px;
+            color: var(--text-muted);
+        }
+        .calculator-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 80px;
+            max-width: 700px;
+            margin: 0 auto 120px;
+        }
+        .calculator-card h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .team-slider-container {
+            margin: 60px 0;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        .price-display {
+            text-align: center;
+            margin: 60px 0;
+        }
+        .price-display .amount {
+            font-size: 120px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .price-display .period {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+        .plan-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .plan-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px;
+            transition: transform 0.3s ease;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+        .plan-card.featured {
+            border: 2px solid var(--primary);
+            background: linear-gradient(160deg, var(--surface) 0%, #1e1b4b 100%);
+        }
+        .plan-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .plan-price {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 24px 0;
+        }
+        .plan-price span {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-header">
+        <h1>Predictable Pricing,<br>Enterprise ROI.</h1>
+        <p>Calculate your investment based on team size. All plans include unlimited memory and white-glove onboarding.</p>
+    </div>
+    
+    <div class="calculator-card">
+        <h2>Team Size Calculator</h2>
+        <div class="team-slider-container">
+            <div class="slider-label">
+                <span>Executives</span>
+                <span id="teamCount">5</span>
+            </div>
+            <input type="range" min="1" max="100" value="5" class="slider" id="teamSlider">
+        </div>
+        <div class="price-display">
+            <div class="amount" id="totalPrice">$299</div>
+            <div class="period">per month</div>
+        </div>
+        <a href="contact.html" style="display: block; text-align: center; padding: 20px; background: var(--primary); color: white; border-radius: 14px; font-size: 18px; font-weight: 600; text-decoration: none;">Get Custom Quote</a>
+    </div>
+    
+    <div class="plan-comparison">
+        <div class="plan-card">
+            <div class="plan-name">Professional</div>
+            <p style="color: var(--text-muted);">For individual executives</p>
+            <div class="plan-price">$299<span>/mo</span></div>
+            <ul style="list-style: none; margin: 40px 0;">
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ Unlimited memory capture</li>
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ 1 human curator review/week</li>
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ 30-day retention</li>
+            </ul>
+            <a href="#" class="btn-primary" style="display: block; width: 100%; text-align: center; padding: 18px; border-radius: 12px; background: var(--primary); color: white; text-decoration: none;">Start Trial</a>
+        </div>
+        <div class="plan-card featured">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="plan-name">Team ⚡</div>
+                <span style="background: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;">Most Popular</span>
+            </div>
+            <p style="color: var(--text-muted);">For leadership teams up to 10</p>
+            <div class="plan-price" id="teamPlanPrice">$1,495<span>/mo</span></div>
+            <ul style="list-style: none; margin: 40px 0;">
+                <li style="padding: 12px 0;">✓ Unlimited memory capture</li>
+                <li style="padding: 12px 0;">✓ 5 curator reviews/week</li>
+                <li style="padding: 12px 0;">✓ Unlimited retention</li>
+                <li style="padding: 12px 0;">✓ Shared knowledge graphs</li>
+            </ul>
+            <a href="#" class="btn-primary" style="display: block; width: 100%; text-align: center; padding: 18px; border-radius: 12px; background: var(--primary); color: white; text-decoration: none;">Start Trial</a>
+        </div>
+        <div class="plan-card">
+            <div class="plan-name">Enterprise</div>
+            <p style="color: var(--text-muted);">For organizations</p>
+            <div class="plan-price">Custom</div>
+            <ul style="list-style: none; margin: 40px 0;">
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ Dedicated curator team</li>
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ On-premise deployment</li>
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ Custom integrations</li>
+                <li style="padding: 12px 0; color: var(--text-muted);">✓ 24/7 support</li>
+            </ul>
+            <a href="#" class="btn-primary" style="display: block; width: 100%; text-align: center; padding: 18px; border-radius: 12px; background: var(--primary); color: white; text-decoration: none;">Contact Sales</a>
+        </div>
+    </div>
+    
+    <script>
+        const slider = document.getElementById('teamSlider');
+        const teamCount = document.getElementById('teamCount');
+        const totalPrice = document.getElementById('totalPrice');
+        const teamPlanPrice = document.getElementById('teamPlanPrice');
+        
+        slider.oninput = function() {
+            const size = parseInt(this.value);
+            teamCount.textContent = size;
+            const price = size * 149;
+            const formatted = price.toLocaleString();
+            totalPrice.textContent = `$${formatted}`;
+            teamPlanPrice.innerHTML = `$${formatted}<span>/mo</span>`;
+        }
+    </script>
+    <script src="main.js" defer></script>
+</body>
+</html>
